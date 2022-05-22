@@ -58,7 +58,7 @@ export const TransactionProvider = ({ children }) => {
           ).toLocaleString(),
           message: transaction.message,
           keyword: transaction.keyword,
-          amount: parseInt(transaction.amount._hex) /(10 ** 18),
+          amount: parseInt(transaction.amount._hex) / 10 ** 18,
         })
       );
 
@@ -134,8 +134,8 @@ export const TransactionProvider = ({ children }) => {
           {
             from: currentAccount,
             to: addressTo,
-            gas: "0x5208",
-            value: parsedAmount._hex,
+            gas: "0x5208", // 21000 GWEI
+            value: parsedAmount._hex, // 0.00001
           },
         ],
       });
@@ -156,6 +156,8 @@ export const TransactionProvider = ({ children }) => {
       const transactionCount = await transactionContract.getTransactionCount();
 
       setTransactionCount(transactionCount.toNumber());
+
+      window.reload();
     } catch (error) {
       console.log(error);
       throw new Error("No ethereum object.");
@@ -175,6 +177,9 @@ export const TransactionProvider = ({ children }) => {
         handleChange,
         formData,
         sendTransaction,
+        transactions,
+        isLoading,
+        transactionCount,
       }}
     >
       {children}
