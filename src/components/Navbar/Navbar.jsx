@@ -12,9 +12,8 @@ const Navbar = () => {
 
   return (
     <nav className="w-full flex md:justify-center justify-between items-center p-4">
-
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
-        <img src={logo} alt="logo" className="w-32 cursor-pointer" />
+        <img src={logo} alt="logo" className="cursor-pointer w-3/5" />
       </div>
 
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
@@ -27,7 +26,6 @@ const Navbar = () => {
       </ul>
 
       <div className="flex relative">
-
         {toggleMenu ? (
           <AiOutlineClose
             fontSize={28}
@@ -58,9 +56,7 @@ const Navbar = () => {
             )}
           </ul>
         )}
-        
       </div>
-
     </nav>
   );
 };
